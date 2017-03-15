@@ -1,0 +1,3 @@
+FILEPATH=$1
+md5sum -q $FILEPATH
+exiftool -q -n -p '$GPSLatitude,$GPSLongitude'  "$FILEPATH"

@@ -13,8 +13,13 @@ exiftool -q -n -p '$GPSLatitude,$GPSLongitude' "$@" | xargs  -I% curl -s 'https:
 CITY=`cat google_geodata.json | jq --unbuffered -r '.[] | select (.types[] | contains("locality")) | .long_name'`
 COUNTRY=`cat google_geodata.json | jq --unbuffered -r '.[] | select (.types[] | contains("country")) | .long_name'`
 
-## Output
-echo "{ \"path\" : \"$FILE\", \"year\" : \"$YEAR\", \"datestamp\" : \"$DATESTAMP\" \"full_address\" : \"$LOCATION\", \"city\" : \"$CITY\", \"country\" : \"$COUNTRY\" }"
+#if [ -n "${VAR}" ]; then
+  #  echo "VAR is unset or set to the empty string"
+
+  ## Output
+  echo "{ \"path\" : \"$FILE\", \"year\" : \"$YEAR\", \"datestamp\" : \"$DATESTAMP\", \"full_address\" : \"$LOCATION\", \"city\" : \"$CITY\", \"country\" : \"$COUNTRY\" }" | perl -pe 's{[^\}]\n}{, }g'
+#echo "\n"
 #echo "$YEAR/${COUNTRY}_${CITY}"
+#fi
 
 rm google_geodata.json

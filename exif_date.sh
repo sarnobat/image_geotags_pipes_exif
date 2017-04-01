@@ -1,0 +1,1 @@
+/home/sarnobat/bin/exif_date.sh

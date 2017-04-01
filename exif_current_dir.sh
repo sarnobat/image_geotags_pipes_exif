@@ -1,0 +1,1 @@
+/home/sarnobat/bin/exif_current_dir.sh

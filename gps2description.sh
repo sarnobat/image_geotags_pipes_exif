@@ -1,0 +1,1 @@
+/home/sarnobat/bin/gps2description.sh

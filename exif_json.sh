@@ -4,6 +4,8 @@ YEAR=`exiftool -d "%Y" -DateTimeOriginal -short -short -short "$@"`
 DATESTAMP=`exiftool -d "%Y-%m-%d" -DateTimeOriginal -short -short -short "$@"`
 LOCATION=`exiftool -q -n -p '$GPSLatitude,$GPSLongitude' "$@" | xargs  -I% curl -s 'https://maps.googleapis.com/maps/api/geocode/json?latlng='%'&sensor=true&key=AIzaSyA6mE4febQ1RlD_rhtPaqVX3aLlIGcx5Cw'| jq --unbuffered -r '.results[0].formatted_address'`
 
+# TODO 2019-05: Also extract the camera info so that we can isolate my iPhone photos from whatsapp and web images.
+
 echo "file =" $FILE
 
 ## Get the Json geodata

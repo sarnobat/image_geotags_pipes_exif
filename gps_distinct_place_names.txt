@@ -1,0 +1,1 @@
+/home/sarnobat/db.git/auto/gps_distinct_place_names.txt
